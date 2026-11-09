@@ -18,21 +18,22 @@ if($password === ''){
     $message = "Veuillez renseigner un mot de passe.";
 }
 else {
-    try {
+    $doublons = $dbh->prepare('SELECT COUNT(*) FROM `users` WHERE `email` = :mail');
+    $doublons->execute([
+        'mail' => $email,
+    ]);
+    if ((int) $doublons->fetchColumn() === 0) {
         $sth = $dbh->prepare('INSERT INTO `users` (`email`, `password`,`created_at`) VALUES (:email, :password, NOW())');
         $sth->execute([
             'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
+               'password' => password_hash($password, PASSWORD_DEFAULT),
         ]);
         $_SESSION['email'] = $email;
         header('Location: index.php');
         exit;
     }
-    catch (PDOException $e) {
-        if ($e->getCode() !== '23000') {
-            throw $e;
-        }
-        $message = 'Ce username est déjà utilisé.';
+    else{
+        $message = "Cet email est deja pris.";
     }
 }
 

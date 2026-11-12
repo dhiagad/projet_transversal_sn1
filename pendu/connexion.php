@@ -7,14 +7,16 @@ if (isset($_SESSION['email'])) {
 }
 
 else{ ?>
+    <main>
     <h1>Connexion</h1>
     <form method="post">
-        <label>Email : </Label>
-        <input type="email" name="email"><br/>
-        <label>Password : </Label>
-        <input type="password" name="password"><br/>
-        <input type="submit" value="Valider" name="connect">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" name="connect">Se connecter</button>
     </form>
+    </main>
     <?php
     if (isset($_POST['connect' ])) {
         $stmt = $dbh->prepare("SELECT * FROM users WHERE email = :email");

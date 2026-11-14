@@ -17,6 +17,7 @@ else{ ?>
         <input type="password" name="password"><br/>
         <input type="submit" value="Valider" name="connect">
     </form>
+    <p>Pas de compte? <a href = inscription.php>Inscrivez vous.</a></p>
     <?php
     if (isset($_POST['connect' ])) {
         $stmt = $dbh->prepare("SELECT * FROM users WHERE email = :email and username = :username");

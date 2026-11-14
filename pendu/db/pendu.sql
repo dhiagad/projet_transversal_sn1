@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 28 oct. 2026 à 15:13
+-- Généré le : sam. 14 nov. 2026 à 12:54
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `pendu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `difficulty`
+--
+
+DROP TABLE IF EXISTS `difficulty`;
+CREATE TABLE IF NOT EXISTS `difficulty` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#FFFFFF',
+  `nb_lettre` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `difficulty`
+--
+
+INSERT INTO `difficulty` (`id`, `name`, `color`, `nb_lettre`) VALUES
+(1, 'easy', '#FFFFFF', 2),
+(2, 'medium', '#FFFFFF', 1),
+(3, 'hard', '#FFFFFF', 0);
 
 -- --------------------------------------------------------
 
@@ -49,18 +73,19 @@ CREATE TABLE IF NOT EXISTS `games` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `created_at`) VALUES
-(5, 'test@test.com', '$2y$10$hd0cSqS6zFIvd2VbHcUfJ.Z91ecL0IZL656JmRWQq/89fL0t8LYu2', '2026-10-28');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
+(8, 'test', 'test@test.com', '$2y$10$.uMrVQu8PJQkJS3zn0yCje2E/amf1YEC8YSZJYsr7Enl67u5WwKT2', '2026-11-14');
 
 -- --------------------------------------------------------
 

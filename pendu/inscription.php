@@ -45,6 +45,7 @@ else {
 
 ?>
 <title>Inscription</title>
+<h1>Inscription</h1>
 <?php if ($message !== ''){ ?><p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p><?php } ?>
 <form method="post">
     <label>Username : <input type="texte" name="username" required></label><br>
@@ -52,6 +53,7 @@ else {
     <label>Mot de passe : <input type="password" name="password" required></label><br>
     <button value="register">S'inscrire</button>
 </form>
+<p>Deja un compte? <a href = connexion.php>Connectez vous.</a></p>
 
 <?php
 require'footer.php';

@@ -1,7 +1,7 @@
 <?php
 require'header.php';
 
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['username'])) {
     header('Location: index.php');
     exit;
 }
@@ -10,6 +10,7 @@ $message = '';
 
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
+$username = $_POST['username'] ?? '';
 
 if ($email === '') {
     $message = "Veuillez renseigner un email.";
@@ -17,23 +18,28 @@ if ($email === '') {
 if($password === ''){
     $message = "Veuillez renseigner un mot de passe.";
 }
+if($username === ''){
+    $message = "Veuillez renseigner un username.";
+}
+
 else {
-    $doublons = $dbh->prepare('SELECT COUNT(*) FROM `users` WHERE `email` = :mail');
+    $doublons = $dbh->prepare('SELECT COUNT(*) FROM `users` WHERE `username` = :username');
     $doublons->execute([
-        'mail' => $email,
+        'username' => $username,
     ]);
     if ((int) $doublons->fetchColumn() === 0) {
-        $sth = $dbh->prepare('INSERT INTO `users` (`email`, `password`,`created_at`) VALUES (:email, :password, NOW())');
+        $sth = $dbh->prepare('INSERT INTO `users` (`username`, `email`, `password`,`created_at`) VALUES (:username, :email, :password, NOW())');
         $sth->execute([
             'email' => $email,
+            'username' => $username,
                'password' => password_hash($password, PASSWORD_DEFAULT),
         ]);
-        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $username;
         header('Location: index.php');
         exit;
     }
     else{
-        $message = "Cet email est deja pris.";
+        $message = "Ce username est deja pris.";
     }
 }
 
@@ -41,6 +47,7 @@ else {
 <title>Inscription</title>
 <?php if ($message !== ''){ ?><p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p><?php } ?>
 <form method="post">
+    <label>Username : <input type="texte" name="username" required></label><br>
     <label>Email : <input type='email' name="email" required></label><br>
     <label>Mot de passe : <input type="password" name="password" required></label><br>
     <button value="register">S'inscrire</button>

@@ -1,30 +1,33 @@
 <?php
 require'header.php';
 
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['username'])) {
     header('Location: index.php');
     exit;
 }
 
 else{ ?>
-    <main>
     <h1>Connexion</h1>
     <form method="post">
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit" name="connect">Se connecter</button>
+        <label>Username : </Label>
+        <input type="texte" name="username"><br/>
+        <label>Email : </Label>
+        <input type="email" name="email"><br/>
+        <label>Password : </Label>
+        <input type="password" name="password"><br/>
+        <input type="submit" value="Valider" name="connect">
     </form>
-    </main>
     <?php
     if (isset($_POST['connect' ])) {
-        $stmt = $dbh->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->execute(['email' => $_POST['email']]);
+        $stmt = $dbh->prepare("SELECT * FROM users WHERE email = :email and username = :username");
+        $stmt->execute([
+            'email' => $_POST['email'],
+            'username' => $_POST['username'],
+            ]);
         $user = $stmt->fetch(PDO :: FETCH_ASSOC);
         if ($user) {
             if (password_verify($_POST['password'], $user['password'])) {
-                $_SESSION['email' ] = $_POST['email'];
+                $_SESSION['username' ] = $_POST['username'];
                 header('Location: index.php');
                 exit;
             }

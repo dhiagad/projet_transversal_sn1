@@ -13,12 +13,13 @@ require_once'config.php';
 
 <header class="topbar">
     <?php
-    if (!isset($_SESSION['email'])){?>
+    if (!isset($_SESSION['username'])){?>
         <a href="connexion.php">connexion</a>
         <a href="inscription.php">inscription</a>
         <?php
     }
     else{?>
+        <p><?php echo ($_SESSION['username'])?></p>
         <a href="deconnexion.php">deconnexion</a>
     <?php
     }?>

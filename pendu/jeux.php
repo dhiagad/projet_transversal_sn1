@@ -1,5 +1,10 @@
 <?php
-session_start();
+require'header.php';
+
+if (!isset($_SESSION['username'])) {
+    header('Location: connexion.php');
+    exit;
+}
 if (!isset($_SESSION['mot'])) {
     $mots = ["TEST", "BANANE", "ORDINATEUR", "MEOW"];
     $_SESSION['mot'] = $mots[array_rand($mots)];
@@ -66,7 +71,5 @@ if ($_SESSION['erreurs'] >= 6) {
     echo "<h2> perdu !</h2>";
     echo "<p>Le mot c'était : $mot</p>";
 }
+require'footer.php';
 ?>
-
-</body>
-</html>

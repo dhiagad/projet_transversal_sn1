@@ -15,6 +15,9 @@ body {
 #menu_btn{
     margin-right: auto;
 }
+#username{
+    color: rgb(255, 255, 255);
+}
 .topbar a {
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -43,6 +46,8 @@ main {
 }
 
 .button {
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     display: inline-block;
     padding: 10px 14px;
     border-radius: 4px;

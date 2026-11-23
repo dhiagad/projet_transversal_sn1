@@ -24,7 +24,7 @@ require_once'config.php';
         }
         else{?>
             <a href="deconnexion.php">deconnexion</a>
-            <span><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+            <span id="username"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
         <?php
         }?>
     </div>

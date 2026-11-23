@@ -12,7 +12,7 @@ require_once'config.php';
 <body>
 
 <header class="topbar">
-    <a id = "menu_btn" href="index.php">Pendu</a>
+    <a id = "menu_btn" href="index.php"><b>Pendu</b></a>
     <div class="bar_btn">
         <a href="classement.php">Classement</a>
         <a href="regles_du_jeu.php">Règles du jeu</a>

@@ -11,12 +11,16 @@ body {
     display: flex;
     gap: 16px;
     align-items: center;
+    font-size: 16px;
 }
 #menu_btn{
     margin-right: auto;
+    padding: 4px 12px;
+    font-size: 20px;
 }
 #username{
     color: rgb(255, 255, 255);
+    font-size: 16px;
 }
 .topbar a {
     color: rgb(255, 255, 255);

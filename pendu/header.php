@@ -12,18 +12,20 @@ require_once'config.php';
 <body>
 
 <header class="topbar">
-    <a classe = "bar_btn" href="index.php">Pendu</a>
-    <?php
-    if (!isset($_SESSION['username'])){?>
-        <a classe = "bar_btn" href="connexion.php">connexion</a>
-        <a classe = "bar_btn" href="inscription.php">inscription</a>
+    <a id = "menu_btn" href="index.php">Pendu</a>
+    <div class="bar_btn">
+        <a href="classement.php">Classement</a>
+        <a href="regles_du_jeu.php">Règles du jeu</a>
         <?php
-    }
-    else{?>
-        <p classe = "bar_btn"><?php echo ($_SESSION['username'])?></p>
-        <a classe = "bar_btn" href="deconnexion.php">deconnexion</a>
-    <?php
-    }?>
-    <a classe = "bar_btn" href="classement.php">Classement</a>
-    <a classe = "bar_btn" href="regles_du_jeu.php">Règles du jeu</a>
+        if (!isset($_SESSION['username'])){?>
+            <a href="connexion.php">connexion</a>
+            <a href="inscription.php">inscription</a>
+            <?php
+        }
+        else{?>
+            <a href="deconnexion.php">deconnexion</a>
+            <span><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <?php
+        }?>
+    </div>
 </header>

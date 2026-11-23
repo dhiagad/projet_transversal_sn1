@@ -8,11 +8,17 @@ body {
 .topbar {
     padding: 14px;
     background-color: #000000;
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
-
+#menu_btn{
+    margin-right: auto;
+}
 .topbar a {
     color: rgb(255, 255, 255);
     text-decoration: none;
+    margin-right: 15px;
 }
 
 main {

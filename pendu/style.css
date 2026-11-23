@@ -8,12 +8,11 @@ body {
 .topbar {
     padding: 14px;
     background-color: #000000;
-    text-align: right;
 }
 
 .topbar a {
-    margin-left: 12px;
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 main {
@@ -41,8 +40,6 @@ main {
     display: inline-block;
     padding: 10px 14px;
     border-radius: 4px;
-    background-color: #2864b0;
-    color: white;
     text-decoration: none;
 }
 
@@ -66,7 +63,6 @@ main form button {
     padding: 9px 14px;
     border: 0;
     border-radius: 4px;
-    background-color: #2864b0;
     color: white;
     cursor: pointer;
 }

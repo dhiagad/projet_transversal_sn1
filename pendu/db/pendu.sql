@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 14 nov. 2026 à 12:54
+-- Généré le : lun. 23 nov. 2026 à 12:31
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS `difficulty` (
 --
 
 INSERT INTO `difficulty` (`id`, `name`, `color`, `nb_lettre`) VALUES
-(1, 'easy', '#FFFFFF', 2),
-(2, 'medium', '#FFFFFF', 1),
-(3, 'hard', '#FFFFFF', 0);
+(1, 'easy', '#55A867', 2),
+(2, 'medium', '#F0B200', 1),
+(3, 'hard', '#D12E3C', 0);
 
 -- --------------------------------------------------------
 

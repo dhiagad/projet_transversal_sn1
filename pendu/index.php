@@ -6,29 +6,20 @@ require'header.php';
     <h1>Bienvenue sur le jeu du pendu !</h1>
     <p>Choisissez votre difficulté.</p>
 
-    <div classe = choix_diff>
+    <div class="choix_diff">
         <?php
-        $dif = $dbh->prepare("SELECT COUNT(*) FROM difficulty");
-        $dif->execute();
-        $nb_dif = $dif->fetchColumn();
-        for ($i = 0;$i < $nb_dif; $i++){
-            $nom = $dbh->prepare("SELECT name FROM difficulty ORDER BY id LIMIT 1 OFFSET :i");
-            $nom->bindValue(':i', $i, PDO::PARAM_INT);
-            $nom->execute();
-            $diff_nom = $nom->fetchColumn();
+        $difficulties = $dbh->query("SELECT name, color FROM difficulty ORDER BY id");
+        foreach ($difficulties as $difficulty) {
+            $difficultyName = $difficulty['name'];
             ?>
-            <div classe = diff>
-                <?php
-                $color = $dbh->prepare("SELECT color FROM difficulty WHERE :diff_nom = name");
-                $color->execute([
-                    'diff_nom' => $diff_nom
-                ]);
-                $diff_color = $color->fetchColumn()?>
-                <h2><?php echo($diff_nom) ?></h2>
-                <a class="button" href="jeux.php" style="background-color: <?php echo($diff_color)?>;">Commencer une partie</a>
+            <div class="diff">
+                <h2><?= htmlspecialchars($difficultyName, ENT_QUOTES, 'UTF-8') ?></h2>
+                <a class="button" href="jeux.php?difficulty=<?= rawurlencode($difficultyName) ?>"
+                   style="background-color: <?= htmlspecialchars($difficulty['color'], ENT_QUOTES, 'UTF-8') ?>;">
+                    Commencer une partie
+                </a>
             </div>
-        <?php
-        }?>
+        <?php } ?>
     </div>
 </main>
 

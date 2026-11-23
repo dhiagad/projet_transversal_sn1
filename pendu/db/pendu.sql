@@ -93,7 +93,6 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
 -- Structure de la table `words`
 --
 
-DROP TABLE IF EXISTS `words`;
 CREATE TABLE IF NOT EXISTS `words` (
   `id` int NOT NULL AUTO_INCREMENT,
   `word` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -105,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `words` (
 -- Déchargement des données de la table `words`
 --
 
-INSERT INTO `words` (`id`, `word`, `difficulty`) VALUES
+INSERT IGNORE INTO `words` (`id`, `word`, `difficulty`) VALUES
 (1, 'crocodile', 'medium'),
 (2, 'apocalypse', 'hard'),
 (3, 'colle', 'easy');

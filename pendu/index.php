@@ -14,10 +14,18 @@ require'header.php';
         for ($i = 0;$i < $nb_dif; $i++){
             $nom = $dbh->prepare("SELECT name FROM difficulty ORDER BY id LIMIT 1 OFFSET :i");
             $nom->bindValue(':i', $i, PDO::PARAM_INT);
-            $nom->execute();?>
+            $nom->execute();
+            $diff_nom = $nom->fetchColumn();
+            ?>
             <div classe = diff>
-                <h2><?php echo($nom->fetchColumn()) ?></h2>
-                <a class="button" href="jeux.php">Commencer une partie</a>
+                <?php
+                $color = $dbh->prepare("SELECT color FROM difficulty WHERE :diff_nom = name");
+                $color->execute([
+                    'diff_nom' => $diff_nom
+                ]);
+                $diff_color = $color->fetchColumn()?>
+                <h2><?php echo($diff_nom) ?></h2>
+                <a class="button" href="jeux.php" style="background-color: <?php echo($diff_color)?>;">Commencer une partie</a>
             </div>
         <?php
         }?>

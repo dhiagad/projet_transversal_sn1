@@ -74,3 +74,25 @@ main form button {
 main nav a {
     margin-right: 12px;
 }
+
+.game {
+    text-align: center;
+}
+
+.game .word {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.game .word span {
+    letter-spacing: 5px;
+}
+
+.game .errors {
+    font-size: 18px;
+}
+
+.game input[type="text"] {
+    width: 75px;
+    text-align: center;
+}
